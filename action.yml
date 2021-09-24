@@ -1,0 +1,15 @@
+name: 'Helm Lint & Test'
+description: 'Automatic Helm Lint and Testing'
+branding:
+  icon: 'cloud'
+  color: 'gray-dark'
+runs:
+  using: "composite"
+  steps:
+    - name: "Run helm-test"
+      shell: bash
+      run: |
+        set -eux
+        entrypoint='/gympass/helm-test'
+        cmd=("$entrypoint" --path .)
+        "${cmd[@]}"
